@@ -1,0 +1,59 @@
+{
+  "name": "whispurrnet",
+  "version": "1.0.0",
+  "description": "An encrypted, resonance-based P2P communication protocol for stealth, speed, and intent-driven transmissions",
+  "main": "dist/Whispurr.js",
+  "types": "dist/Whispurr.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "deno test --allow-net --allow-crypto",
+    "test:node": "jest",
+    "start": "node dist/examples/whispurr-test.js",
+    "start:deno": "deno run --allow-net --allow-crypto whispurrnet/examples/whispurr-test.ts",
+    "lint": "eslint whispurrnet/**/*.ts",
+    "lint:fix": "eslint whispurrnet/**/*.ts --fix",
+    "format": "prettier --write whispurrnet/**/*.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "p2p",
+    "encryption",
+    "privacy",
+    "webrtc",
+    "gossip",
+    "resonance",
+    "whisper",
+    "decentralized",
+    "typescript"
+  ],
+  "author": "CursorKitt3n<3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/M-K-World-Wide/WhispurrNet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/M-K-World-Wide/WhispurrNet/issues"
+  },
+  "homepage": "https://github.com/M-K-World-Wide/WhispurrNet#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "whispurrnet/**/*.ts",
+    "README.md",
+    "LICENSE"
+  ]
+} 
