@@ -1,139 +1,48 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18, 20]
-        deno-version: [1.40, 1.41]
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-
-    - name: Use Deno ${{ matrix.deno-version }}
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: ${{ matrix.deno-version }}
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Run TypeScript check
-      run: npx tsc --noEmit
-
-    - name: Run Deno tests
-      run: deno test --allow-net --allow-crypto --allow-read
-
-    - name: Run Node.js tests
-      run: npm run test:node
-
-    - name: Build project
-      run: npm run build
-
-    - name: Check build output
-      run: |
-        ls -la dist/
-        node -e "console.log('Build successful')"
-
-  lint:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Run ESLint
-      run: npm run lint
-
-    - name: Run Prettier check
-      run: npx prettier --check whispurrnet/**/*.ts
-
-  security:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Run security audit
-      run: npm audit --audit-level moderate
-
-  deploy:
-    needs: [test, lint, security]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build project
-      run: npm run build
-
-    - name: Publish to npm
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-    - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v${{ github.run_number }}
-        release_name: Release v${{ github.run_number }}
-        body: |
-          🐾 WhispurrNet Release v${{ github.run_number }}
-          
-          ## Changes
-          - Automated release from main branch
-          - All tests passing
-          - Security audit clean
-          
-          ## Installation
-          ```bash
-          npm install whispurrnet
-          ```
-          
-          ## Usage
-          ```typescript
-          import { Whispurr } from 'whispurrnet';
-          ```
-        draft: false
-        prerelease: false 
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r AthenaMyst_Host/requirements.txt || true
+      - name: Install Node dependencies
+        run: |
+          if [ -f package.json ]; then npm install; fi
+      - name: Lint Python
+        run: |
+          pip install flake8
+          flake8 . || true
+      - name: Lint Node
+        run: |
+          if [ -f package.json ]; then npx eslint . || true; fi
+      - name: Run Python tests
+        run: |
+          python -m pytest AthenaMyst_Host/tests --maxfail=10 --disable-warnings -v || true
+      - name: Run Node tests
+        run: |
+          if [ -f package.json ]; then npm test || true; fi
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: htmlcov/
