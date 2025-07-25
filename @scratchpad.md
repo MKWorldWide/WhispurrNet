@@ -1,6 +1,59 @@
 # 📝 WhispurrNet Development Scratchpad
 
+## 🔄 Cross-Repo Integration Tasks
+
+### 1. **MKWW Web Interface**
+- [ ] Implement WebSocket bridge for real-time updates
+- [ ] Add SSH tunneling support for secure remote access
+- [ ] Create admin dashboard for monitoring cross-repo health
+
+### 2. **Luna Event System**
+- [ ] Integrate Luna's event bus with WhispurrNet
+- [ ] Implement event replay for recovery scenarios
+- [ ] Add metrics collection for event throughput
+
+### 3. **Petfinity Scripting**
+- [ ] Expose WhispurrNet API to Lua scripts
+- [ ] Implement sandboxed execution environment
+- [ ] Create script management interface
+
+### 4. **BladeAeternum Performance**
+- [ ] Profile and optimize critical paths
+- [ ] Implement memory pooling for message handling
+- [ ] Add performance telemetry
+
+### 5. **Purrify Data Pipeline**
+- [ ] Integrate data validation schemas
+- [ ] Implement streaming data processing
+- [ ] Add data transformation utilities
+
 ## 🚧 Current Development Notes
+
+### Divina-L3 Integration Status
+
+#### 1. **L3 Routing Protocol**
+**Status**: Initial implementation complete
+**Next Steps**:
+- [ ] Performance benchmarking
+- [ ] Edge case testing
+- [ ] Documentation updates
+**Blockers**: None
+
+#### 2. **Entropy Enhancement**
+**Status**: Core implementation done
+**Next Steps**:
+- [ ] Audit entropy quality
+- [ ] Optimize mixing function
+- [ ] Add tests for edge cases
+**Blockers**: Need more test vectors
+
+#### 3. **Security Review**
+**Status**: Pending
+**Next Steps**:
+- [ ] Schedule security audit
+- [ ] Review forward secrecy implementation
+- [ ] Test metadata protection
+**Blockers**: Awaiting team availability
 
 ### Active Work Items
 
@@ -68,7 +121,40 @@
 **Applications**: Anonymous voting, private credentials
 **Technology**: zk-SNARKs or similar
 
+### 🧪 Cross-Repo Testing Strategy
+
+#### Integration Testing
+- [ ] End-to-end tests across all repos
+- [ ] Performance benchmarking suite
+- [ ] Failure mode testing
+
+#### Security Testing
+- [ ] Cross-repo authentication flows
+- [ ] Data validation at boundaries
+- [ ] Access control verification
+
+#### Performance Testing
+- [ ] Load testing across all components
+- [ ] Memory leak detection
+- [ ] Latency profiling
+
 ### 🧪 Testing Ideas
+
+#### Divina-L3 Specific Tests
+**1. Multi-Path Routing**
+- [ ] Test path selection algorithm
+- [ ] Measure latency across multiple paths
+- [ ] Verify fault tolerance
+
+**2. Entropy Quality**
+- [ ] Statistical analysis of entropy sources
+- [ ] Test for bias in routing decisions
+- [ ] Measure performance impact
+
+**3. Security Properties**
+- [ ] Verify forward secrecy guarantees
+- [ ] Test metadata leakage
+- [ ] Validate key rotation
 
 #### 1. **Network Simulation**
 **Goal**: Test behavior under various network conditions
@@ -128,6 +214,23 @@
 
 ### 🎯 Use Case Exploration
 
+#### Divina-L3 Enhanced Use Cases
+
+**1. Decentralized VPN**
+- **Features**: Multi-hop routing, traffic obfuscation
+- **L3 Benefits**: Improved privacy, better routing
+- **Challenges**: Performance optimization
+
+**2. Censorship-Resistant Messaging**
+- **Features**: Stealth routing, deniable communications
+- **L3 Benefits**: Stronger metadata protection
+- **Challenges**: UX for key management
+
+**3. IoT Mesh Networks**
+- **Features**: Dynamic routing, self-healing
+- **L3 Benefits**: Better scalability
+- **Challenges**: Resource constraints
+
 #### 1. **Decentralized Chat**
 **Features**: Group chats, private messages, message persistence
 **Implementation**: Extension-based chat system
@@ -176,6 +279,23 @@
 **Current**: Example-based testing
 **Goal**: Comprehensive unit and integration tests
 **Framework**: Jest or similar testing framework
+
+### 🚀 Cross-Repo Deployment
+
+#### Version Management
+- [ ] Synchronized versioning across repos
+- [ ] Dependency resolution strategy
+- [ ] Rollback procedures
+
+#### Monitoring & Observability
+- [ ] Unified logging format
+- [ ] Cross-repo tracing
+- [ ] Centralized metrics collection
+
+#### CI/CD Pipeline
+- [ ] Coordinated builds
+- [ ] Integration test automation
+- [ ] Canary deployment support
 
 ### 🚀 Deployment Considerations
 

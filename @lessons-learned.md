@@ -1,6 +1,75 @@
 # 📚 WhispurrNet Development Lessons Learned
 
+## 🔗 Cross-Repository Integration Lessons
+
+### 1. **Modular Architecture (from MKWW & Luna)**
+**Lesson**: Decoupled components enable better cross-repo integration.
+**Implementation**:
+- Clear interface definitions between modules
+- Event-based communication channels
+- Versioned API contracts
+**Benefit**: Easier maintenance and independent evolution of components
+**Best Practice**: Document all cross-repo interfaces and version them explicitly
+
+### 2. **Performance Optimization (from BladeAeternum)**
+**Lesson**: Cross-language optimization requires careful benchmarking.
+**Implementation**:
+- Memory pooling for high-frequency operations
+- Zero-copy data passing between components
+- Asynchronous processing pipelines
+**Benefit**: Maintains performance across language boundaries
+**Challenge**: Debugging cross-language performance issues
+
+### 3. **Scripting Integration (from Petfinity)**
+**Lesson**: Embeddable scripting enables dynamic behavior.
+**Implementation**:
+- Sandboxed Lua VM integration
+- Type-safe bindings for TypeScript/Lua interop
+- Hot-reloading of script components
+**Benefit**: Runtime extensibility without recompilation
+**Best Practice**: Implement resource limits and timeouts for script execution
+
+### 4. **Data Transformation (from Purrify)**
+**Lesson**: Clean data pipelines are essential for reliability.
+**Implementation**:
+- Schema validation for all cross-repo data
+- Immutable data structures for consistency
+- Stream processing for large datasets
+**Benefit**: Prevents data corruption and simplifies debugging
+
 ## 🔍 Key Insights & Best Practices
+
+### 🏗️ Divina-L3 Integration Lessons
+
+#### 1. **Layered Protocol Architecture**
+**Lesson**: Clear separation between L2 and L3 protocols enhances flexibility.
+**Implementation**: Implemented L3 as an extension of base WhispurrNet protocol.
+**Benefit**: Maintains backward compatibility while adding advanced routing capabilities.
+**Best Practice**: Design protocol layers with clean interfaces and versioning.
+
+#### 2. **Entropy Enhancement**
+**Lesson**: High-quality entropy is critical for secure routing decisions.
+**Implementation**: Multiple entropy sources with continuous mixing.
+**Benefit**: Improved resistance to traffic analysis and node fingerprinting.
+**Challenge**: Balancing entropy quality with performance impact.
+
+#### 3. **Multi-Path Routing**
+**Lesson**: Multiple message paths increase reliability and privacy.
+**Implementation**: Dynamic path selection based on network conditions.
+**Benefit**: Better resistance to network partitions and traffic analysis.
+**Best Practice**: Implement path diversity metrics for optimal routing.
+
+#### 4. **Forward Secrecy**
+**Lesson**: Long-lived L3 routes require special security considerations.
+**Implementation**: Ephemeral session keys with periodic rekeying.
+**Benefit**: Compromise of one route doesn't affect past or future communications.
+**Challenge**: Managing key rotation with minimal disruption.
+
+#### 5. **Metadata Protection**
+**Lesson**: L3 routing information can leak sensitive metadata.
+**Implementation**: Obfuscated routing tables and timing protection.
+**Benefit**: Stronger privacy guarantees for message routing.
+**Best Practice**: Treat routing metadata with same care as message contents.
 
 ### 🏗️ Architecture Design Lessons
 
