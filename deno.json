@@ -1,0 +1,39 @@
+{
+  "name": "whispurrnet",
+  "version": "1.0.0",
+  "description": "An encrypted, resonance-based P2P communication protocol",
+  "main": "whispurrnet/Whispurr.ts",
+  "imports": {
+    "whispurrnet/": "./whispurrnet/"
+  },
+  "tasks": {
+    "start": "deno run --allow-net --allow-crypto whispurrnet/examples/whispurr-test.ts",
+    "test": "deno test --allow-net --allow-crypto",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "check": "deno check whispurrnet/**/*.ts"
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["whispurrnet/", "examples/"]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 80,
+      "indentWidth": 2,
+      "semiColons": true,
+      "singleQuote": true,
+      "proseWrap": "preserve"
+    }
+  }
+} 
