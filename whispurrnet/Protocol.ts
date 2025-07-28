@@ -21,7 +21,7 @@
  * Dependencies: entropy.ts, Web Crypto API
  */
 
-import { deriveResonanceKey, generateWhisperTag } from './utils/entropy';
+import { deriveResonanceKey, generateWhisperTag } from "./utils/entropy.ts";
 
 /**
  * Protocol version for compatibility checking

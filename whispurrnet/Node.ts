@@ -21,8 +21,8 @@
  * Dependencies: Protocol.ts, entropy.ts, WebRTC API, WebSocket API
  */
 
-import { Message, MessageType, createMessage, validateMessage, serializeMessage, deserializeMessage } from './Protocol';
-import { generateEphemeralNodeId, generateKeyPair, validateNodeId } from './utils/entropy';
+import { Message, MessageType, createMessage, validateMessage, serializeMessage, deserializeMessage } from "./Protocol.ts";
+import { generateEphemeralNodeId, generateKeyPair, validateNodeId } from "./utils/entropy.ts";
 
 /**
  * Connection state enumeration

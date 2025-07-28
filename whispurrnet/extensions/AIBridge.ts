@@ -11,8 +11,8 @@
  *
  * Usage Example:
  * ```ts
- * import { Whispurr } from '../Whispurr';
- * import { AIBridge } from './extensions/AIBridge';
+ * import { Whispurr } from "./Whispurr.ts";
+ * import { AIBridge } from "./extensions/AIBridge.ts";
  *
  * const whispurr = new Whispurr({ debug: true });
  * const aiBridge = new AIBridge();
@@ -30,8 +30,8 @@
  * ```
  */
 
-import { WhispurrExtension, MessageType, Whispurr } from '../Whispurr';
-import { Message, createMessage } from '../Protocol';
+import { WhispurrExtension, MessageType, Whispurr } from "./Whispurr.ts";
+import { Message, createMessage } from "./Protocol.ts";
 
 export class AIBridge implements WhispurrExtension {
   id = 'ai-bridge';

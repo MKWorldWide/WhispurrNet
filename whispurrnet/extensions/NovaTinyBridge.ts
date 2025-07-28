@@ -13,8 +13,8 @@
  *
  * Usage Example:
  * ```ts
- * import { Whispurr } from '../Whispurr';
- * import { NovaTinyBridge } from './extensions/NovaTinyBridge';
+ * import { Whispurr } from "./Whispurr.ts";
+ * import { NovaTinyBridge } from "./extensions/NovaTinyBridge.ts";
  *
  * const whispurr = new Whispurr({ debug: true });
  * const novaBridge = new NovaTinyBridge();
@@ -34,8 +34,8 @@
  * Security: All messages are encrypted and intent-driven. No metadata leakage.
  */
 
-import { WhispurrExtension, MessageType, Whispurr } from '../Whispurr';
-import { Message, createMessage } from '../Protocol';
+import { WhispurrExtension, MessageType, Whispurr } from "./Whispurr.ts";
+import { Message, createMessage } from "./Protocol.ts";
 
 export class NovaTinyBridge implements WhispurrExtension {
   id = 'nova-tiny-bridge';

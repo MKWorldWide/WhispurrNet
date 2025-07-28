@@ -8,9 +8,9 @@
  * deno run --allow-net --allow-crypto connect-to-divinal3.ts
  */
 
-import { Whispurr } from './whispurrnet/Whispurr';
-import { BOOTSTRAP_NODES, NETWORK_CONFIG } from './divina-l3-config';
-import { Message, MessageType } from './whispurrnet/Protocol';
+import { Whispurr } from './whispurrnet/Whispurr.ts';
+import { BOOTSTRAP_NODES, NETWORK_CONFIG } from './divina-l3-config.ts';
+import { Message, MessageType } from './whispurrnet/Protocol.ts';
 
 // Function to format peer information for display
 function formatPeerInfo(peer: any): string {
@@ -29,40 +29,38 @@ async function connectToDivinaL3() {
       // Add any additional configuration overrides here
     });
 
-    // Set up event handlers
-    whispurr.onEvent((event) => {
-      switch (event.type) {
-        case 'connected':
-          console.log(`✅ Connected to ${formatPeerInfo(event.peer)}`);
-          break;
-        case 'disconnected':
-          console.log(`⚠️ Disconnected from peer ${event.peerId}: ${event.reason}`);
-          break;
-        case 'message':
-          const msg = event.message;
-          console.log(`\n📨 New ${msg.type} message from ${event.peer.nodeId}:`);
-          console.log(`   • Timestamp: ${new Date().toISOString()}`);
-          console.log(`   • Type: ${msg.type}`);
-          
-          // Handle different message types
-          if (msg.type === MessageType.WHISPER) {
-            console.log('   • Message Type: Private Whisper');
-          } else if (msg.type === MessageType.BROADCAST) {
-            console.log('   • Message Type: Network Broadcast');
-          } else if (msg.type === MessageType.RESONANCE) {
-            console.log('   • Message Type: Resonance (Intent-based)');
-          }
-          
-          // Display a preview of the message content
-          const preview = msg.payload.length > 100 
-            ? `${msg.payload.substring(0, 100)}...` 
-            : msg.payload;
-          console.log(`   • Content: ${preview}`);
-          break;
-        case 'error':
-          console.error(`❌ Error${event.peerId ? ` with peer ${event.peerId}` : ''}:`, event.error);
-          break;
+    // Set up event handlers for the Whispurr node
+    whispurr['node'].on('connect', (peer: any) => {
+      console.log(`✅ Connected to peer ${peer.nodeId}`);
+    });
+
+    whispurr['node'].on('disconnect', (peerId: string, reason: string) => {
+      console.log(`⚠️ Disconnected from peer ${peerId}: ${reason}`);
+    });
+
+    whispurr['node'].on('message', (message: any, peer: any) => {
+      console.log(`\n📨 New message from ${peer.nodeId}:`);
+      console.log(`   • Timestamp: ${new Date().toISOString()}`);
+      console.log(`   • Type: ${message.type}`);
+      
+      // Handle different message types
+      if (message.type === MessageType.WHISPER) {
+        console.log('   • Message Type: Private Whisper');
+      } else if (message.type === MessageType.BROADCAST) {
+        console.log('   • Message Type: Network Broadcast');
+      } else if (message.type === MessageType.RESONANCE) {
+        console.log('   • Message Type: Resonance (Intent-based)');
       }
+      
+      // Display a preview of the message content
+      const preview = message.payload && message.payload.length > 100 
+        ? `${message.payload.substring(0, 100)}...` 
+        : message.payload || '[No content]';
+      console.log(`   • Content: ${preview}`);
+    });
+
+    whispurr['node'].on('error', (error: Error) => {
+      console.error('❌ Node error:', error);
     });
 
     // Initialize the node

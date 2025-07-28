@@ -11,8 +11,8 @@
  *
  * Usage Example:
  * ```ts
- * import { Whispurr } from '../Whispurr';
- * import { BlockchainBridge } from './extensions/BlockchainBridge';
+ * import { Whispurr } from "./Whispurr.ts";
+ * import { BlockchainBridge } from "./extensions/BlockchainBridge.ts";
  *
  * const whispurr = new Whispurr({ debug: true });
  * const chainBridge = new BlockchainBridge();
@@ -29,8 +29,8 @@
  * ```
  */
 
-import { WhispurrExtension, MessageType, Whispurr } from '../Whispurr';
-import { Message, createMessage } from '../Protocol';
+import { WhispurrExtension, MessageType, Whispurr } from "./Whispurr.ts";
+import { Message, createMessage } from "./Protocol.ts";
 
 export class BlockchainBridge implements WhispurrExtension {
   id = 'blockchain-bridge';

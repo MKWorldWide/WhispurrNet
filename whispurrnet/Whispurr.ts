@@ -22,7 +22,7 @@
  * Dependencies: Node.ts, Protocol.ts, entropy.ts, Web Crypto API
  */
 
-import { WhispurrNode, ConnectionConfig, PeerInfo, ConnectionEvent } from './Node';
+import { WhispurrNode, ConnectionConfig, PeerInfo, ConnectionEvent } from "./Node.ts";
 import { 
   Message, 
   MessageType, 
@@ -30,11 +30,11 @@ import {
   validateMessage, 
   matchesResonance,
   isMessageExpired 
-} from './Protocol';
+} from "./Protocol.ts";
 
 // Re-export MessageType for convenience
 export { MessageType };
-import { generateWhisperTag, deriveResonanceKey } from './utils/entropy';
+import { generateWhisperTag, deriveResonanceKey } from "./utils/entropy.ts";
 
 /**
  * Extension interface for modular functionality

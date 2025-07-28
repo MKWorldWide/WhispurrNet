@@ -11,8 +11,8 @@
  *
  * Usage Example:
  * ```ts
- * import { Whispurr } from '../Whispurr';
- * import { FileSyncBridge } from './extensions/FileSyncBridge';
+ * import { Whispurr } from "./Whispurr.ts";
+ * import { FileSyncBridge } from "./extensions/FileSyncBridge.ts";
  *
  * const whispurr = new Whispurr({ debug: true });
  * const fileSync = new FileSyncBridge();
@@ -31,8 +31,8 @@
  * ```
  */
 
-import { WhispurrExtension, MessageType, Whispurr } from '../Whispurr';
-import { Message, createMessage } from '../Protocol';
+import { WhispurrExtension, MessageType, Whispurr } from "./Whispurr.ts";
+import { Message, createMessage } from "./Protocol.ts";
 
 export class FileSyncBridge implements WhispurrExtension {
   id = 'file-sync-bridge';

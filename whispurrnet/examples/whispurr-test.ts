@@ -21,9 +21,9 @@
  * Security: All communication is end-to-end encrypted with ephemeral identities
  */
 
-import { Whispurr, WhispurrExtension, MessageType } from '../Whispurr';
-import { Message, createMessage } from '../Protocol';
-import { PeerInfo } from '../Node';
+import { Whispurr, WhispurrExtension, MessageType } from "./Whispurr.ts";
+import { Message, createMessage } from "./Protocol.ts";
+import { PeerInfo } from "./Node.ts";
 
 /**
  * Example extension for file synchronization
