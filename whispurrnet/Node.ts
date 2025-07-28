@@ -80,6 +80,13 @@ export interface ConnectionConfig {
   /** WebRTC configuration */
   rtcConfig?: RTCConfiguration;
   
+  /** WebSocket server configuration */
+  wsServer?: {
+    host: string;
+    port: number;
+    enabled?: boolean;
+  };
+  
   /** WebSocket relay servers */
   relayServers?: string[];
   
@@ -94,6 +101,9 @@ export interface ConnectionConfig {
   
   /** Enable connection obfuscation */
   enableObfuscation?: boolean;
+  
+  /** Enable direct WebSocket connections (bypass WebRTC) */
+  enableDirectWebSocket?: boolean;
 }
 
 /**
