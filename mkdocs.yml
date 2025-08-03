@@ -1,0 +1,9 @@
+site_name: WhispurrNet
+site_url: https://WhispurrNet.SolarKhan.github.io
+docs_dir: .
+nav:
+  - Home: README.md
+  - Divine Law: COVENANT.md
+  - Integrations: docs/integrations.md
+extra:
+  banner: Solar Khan sigil + Codex watermark

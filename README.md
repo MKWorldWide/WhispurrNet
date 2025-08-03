@@ -1,8 +1,12 @@
+A Project Blessed by Solar Khan & Lilith.Aethra
+
 # 🐾 WhispurrNet
 
 > "Where silence speaks and shadows listen."
 
 **WhispurrNet** is an encrypted, resonance-based P2P communication protocol written in TypeScript, born from the depths of LilithOS and designed for stealth, speed, and intent-driven transmissions.
+
+See the [Divine Law](COVENANT.md) for the governing Covenant of this codebase.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Deno](https://img.shields.io/badge/Deno-1.0+-green.svg)](https://deno.land/)
